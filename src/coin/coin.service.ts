@@ -13,7 +13,9 @@ export class CoinService {
   ) {}
 
   async getCoins(): Promise<string> {
-    const coins = await this.prisma.coin.findMany();
+    const coins = await this.prisma.coin.findMany({
+      orderBy: { marketCapRank: 'asc' },
+    });
     if (
       coins.length > 0 &&
       coins[0].lastUpdated.getTime() < Date.now() - 1000 * 60 * 60 * 24 // Heute - 24 Stunden
@@ -79,7 +81,9 @@ export class CoinService {
         });
       });
 
-      const coins = await this.prisma.coin.findMany();
+      const coins = await this.prisma.coin.findMany({
+        orderBy: { marketCapRank: 'asc' },
+      });
       return JSON.stringify({
         coins,
       });
