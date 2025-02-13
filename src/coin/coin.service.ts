@@ -49,6 +49,7 @@ export class CoinService {
       'market_cap_rank',
       'price_change_percentage_7d_in_currency',
       'last_updated',
+      'image',
     ];
 
     if (
@@ -76,6 +77,7 @@ export class CoinService {
             priceChangePercentage7dInCurrency:
               data.price_change_percentage_7d_in_currency,
             lastUpdated: new Date(data.last_updated),
+            image: data.image,
           },
           where: isCoinExistent ? { coinId: data.id } : undefined,
         });

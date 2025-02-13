@@ -22,4 +22,5 @@ model Coin {
   marketCapRank Int
   priceChangePercentage7dInCurrency Float
   lastUpdated DateTime @default(now())
+  image String?
 }
