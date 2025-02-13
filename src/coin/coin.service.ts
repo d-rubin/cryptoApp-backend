@@ -18,7 +18,7 @@ export class CoinService {
     });
     if (
       coins.length > 0 &&
-      coins[0].lastUpdated.getTime() < Date.now() - 1000 * 60 * 60 * 24 // Heute - 24 Stunden
+      coins[0].lastUpdated.getTime() > Date.now() - 1000 * 60 * 60 * 24 // Heute - 24 Stunden
     ) {
       return JSON.stringify({ coins: coins });
     }
